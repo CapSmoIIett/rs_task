@@ -12,7 +12,7 @@ public:
 	{
 		uint64_t player_id;
 		std::string action_type;
-		std::chrono::system_clock::time_point timestamp;
+		std::chrono::steady_clock::time_point timestamp;
 
 		Action(uint64_t player_id, const std::string &action_type);
 	};

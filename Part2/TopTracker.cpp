@@ -3,7 +3,7 @@
 TopTracker::Action::Action(uint64_t player_id, const std::string &action_type):
 	player_id(player_id),
 	action_type(action_type),
-	timestamp(std::chrono::system_clock::now())
+	timestamp(std::chrono::steady_clock::now())
 { }
 
 TopTracker::TopTracker(size_t max_actions, std::chrono::seconds timeout):
@@ -25,7 +25,7 @@ void TopTracker::add_action(uint64_t player_id, const std::string &action_type)
 
 void TopTracker::cleanup_expired()
 {
-	auto now = std::chrono::system_clock::now();
+	auto now = std::chrono::steady_clock::now();
 
 	while (!actions.empty())
 	{
